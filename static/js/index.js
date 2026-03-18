@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateVideo() {
-        const videoPath = `static/videos/${task.value}_${direction.value}_${status.value}.mp4`;
+        const videoPath = `static/videos/${task.value}_${direction.value}_${status.value}_web.mp4`;
         console.log("Loading video:", videoPath);
 
         video.src = videoPath;
