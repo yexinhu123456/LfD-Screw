@@ -142,6 +142,10 @@ $(document).ready(function() {
 })
 
 
+document.querySelectorAll("select").forEach(el => {
+  el.addEventListener("change", updateVideo);
+});
+
 function updateVideo() {
   const task = document.getElementById("task").value;
   const direction = document.getElementById("direction").value;
