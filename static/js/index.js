@@ -196,10 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       videoContainer.style.display = "none";
       explanationBox.style.display = "block";
-      explanationBox.innerHTML = `
-        <strong>No lock opening reverse execution</strong>
-        This case is omitted because the lock's own mechanism does not support closing the lock with the key.
-      `;
       return;
     }
 
