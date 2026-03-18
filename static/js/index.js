@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    task.addEventListener("change", updateVideo);
+    task.addEventListener("change", updateDemoVideo);
 
     updateDemoVideo();
 });
@@ -220,9 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
       video.pause();
       video.removeAttribute("src");
       video.load();
-      video.play().catch((err) => {
-        console.log("Autoplay blocked or failed:", err);
-      });
         
       videoContainer.style.display = "none";
       explanationBox.style.display = "block";
@@ -237,7 +234,9 @@ document.addEventListener("DOMContentLoaded", function () {
     video.src = videoPath;
     video.load();
   }
-
+    video.play().catch((err) => {
+      console.log("Autoplay blocked or failed:", err);
+    });
   task.addEventListener("change", updateNovelVideo);
   direction.addEventListener("change", updateNovelVideo);
 
