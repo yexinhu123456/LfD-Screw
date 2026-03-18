@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const video = document.getElementById("demo");
-    const task = document.getElementById("task");
+    const task = document.getElementById("demo-task");
 
     if (!video || !task) {
         console.log("Experiment video controls not found.");
