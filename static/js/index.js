@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-ocument.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const video = document.getElementById("novelObjectVideo");
   const videoContainer = document.getElementById("novelVideoContainer");
   const explanationBox = document.getElementById("novelExplanationBox");
