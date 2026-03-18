@@ -174,6 +174,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("demo");
+    const task = document.getElementById("task");
+
+    if (!video || !task) {
+        console.log("Experiment video controls not found.");
+        return;
+    }
+
+    function updateVideo() {
+        const videoPath = `static/videos/${task.value}_demo_web.mp4`;
+        console.log("Loading video:", videoPath);
+
+        video.src = videoPath;
+        video.load();
+
+        video.play().catch((err) => {
+            console.log("Autoplay blocked or failed:", err);
+        });
+    }
+
+    task.addEventListener("change", updateVideo);
+
+    updateVideo();
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
   const video = document.getElementById("novelObjectVideo");
   const videoContainer = document.getElementById("novelVideoContainer");
   const explanationBox = document.getElementById("novelExplanationBox");
@@ -193,7 +220,10 @@ document.addEventListener("DOMContentLoaded", function () {
       video.pause();
       video.removeAttribute("src");
       video.load();
-
+      video.play().catch((err) => {
+        console.log("Autoplay blocked or failed:", err);
+      });
+        
       videoContainer.style.display = "none";
       explanationBox.style.display = "block";
       return;
