@@ -339,9 +339,32 @@
 
 
 
+<div class="has-text-centered mb-4">
 
+  <select id="task">
+    <option value="peg">Peg</option>
+    <option value="battery">Battery</option>
+    <option value="key">Key</option>
+    <option value="screw">Screw</option>
+  </select>
 
+  <select id="direction">
+    <option value="forward">Forward</option>
+    <option value="reverse">Reverse</option>
+  </select>
 
+  <select id="status">
+    <option value="complete">Complete</option>
+    <option value="unfinished">Unfinished</option>
+  </select>
+
+  <button onclick="updateVideo()">Show</button>
+
+</div>
+
+<video id="demoVideo" controls width="600">
+  <source src="static/videos/peg_forward_complete.mp4" type="video/mp4">
+</video>
 
 
 
