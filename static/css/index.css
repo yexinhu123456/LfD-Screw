@@ -756,8 +756,10 @@ a:focus {
 }
 
 .video-container video {
+  max-width: 700px;
   width: 100%;
   display: block;
+  margin: 0 auto;
 }
 
 .video-label {
