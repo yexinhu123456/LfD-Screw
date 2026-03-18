@@ -142,21 +142,32 @@ $(document).ready(function() {
 })
 
 
-document.querySelectorAll("select").forEach(el => {
-  el.addEventListener("change", updateVideo);
-});
-
-function updateVideo() {
-  const task = document.getElementById("task").value;
-  const direction = document.getElementById("direction").value;
-  const status = document.getElementById("status").value;
-
-  const videoPath = `static/videos/${task}_${direction}_${status}.mp4`;
-
+document.addEventListener("DOMContentLoaded", function () {
   const video = document.getElementById("demoVideo");
-  const source = video.querySelector("source");
+  const task = document.getElementById("task");
+  const direction = document.getElementById("direction");
+  const status = document.getElementById("status");
 
-  source.src = videoPath;
-  video.load();
-  video.play();
-}
+  if (!video || !task || !direction || !status) {
+    console.log("Experiment video controls not found.");
+    return;
+  }
+
+  function updateVideo() {
+    const videoPath = `static/videos/${task.value}_${direction.value}_${status.value}.mp4`;
+    console.log("Loading video:", videoPath);
+
+    video.src = videoPath;
+    video.load();
+
+    video.play().catch((err) => {
+      console.log("Autoplay blocked or failed:", err);
+    });
+  }
+
+  task.addEventListener("change", updateVideo);
+  direction.addEventListener("change", updateVideo);
+  status.addEventListener("change", updateVideo);
+
+  updateVideo();
+});
