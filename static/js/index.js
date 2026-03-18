@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    const videoPath = `static/videos/${selectedTask}_${selectedDirection}.mp4`;
+    const videoPath = `static/videos/${selectedTask}_${selectedDirection}_novel_web.mp4`;
 
     explanationBox.style.display = "none";
     videoContainer.style.display = "block";
