@@ -170,3 +170,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateVideo();
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const video = document.getElementById("novelObjectVideo");
+  const task = document.getElementById("novel-task");
+  const direction = document.getElementById("novel-direction");
+
+  if (!video || !task || !direction) {
+    console.log("Novel object video controls not found.");
+    return;
+  }
+
+  function updateNovelVideo() {
+    const videoPath = `static/videos/${task.value}_${direction.value}_novel_web.mp4`;
+    console.log("Loading novel object video:", videoPath);
+
+    video.src = videoPath;
+    video.load();
+  }
+
+  task.addEventListener("change", updateNovelVideo);
+  direction.addEventListener("change", updateNovelVideo);
+
+  updateNovelVideo();
+});
