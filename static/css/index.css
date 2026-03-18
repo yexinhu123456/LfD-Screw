@@ -752,14 +752,14 @@ a:focus {
 
 .video-container {
   position: relative;
-  display: inline-block;
+  display: block;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .video-container video {
-  max-width: 700px;
   width: 100%;
   display: block;
-  margin: 0 auto;
 }
 
 .video-label {
@@ -769,7 +769,7 @@ a:focus {
   color: white;
   font-weight: bold;
   font-size: 20px;
-  background: rgba(0, 0, 0, 0.5); /* optional for visibility */
+  background: rgba(0, 0, 0, 0.5);
   padding: 4px 8px;
   border-radius: 6px;
 }
