@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    function updateVideo() {
+    function updateDemoVideo() {
         const videoPath = `static/videos/${task.value}_demo_web.mp4`;
         console.log("Loading video:", videoPath);
 
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     task.addEventListener("change", updateVideo);
 
-    updateVideo();
+    updateDemoVideo();
 });
 
 
