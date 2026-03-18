@@ -158,4 +158,5 @@ function updateVideo() {
 
   source.src = videoPath;
   video.load();
+  video.play();
 }
