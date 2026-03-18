@@ -175,17 +175,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   const video = document.getElementById("novelObjectVideo");
+  const videoContainer = document.getElementById("novelVideoContainer");
+  const explanationBox = document.getElementById("novelExplanationBox");
   const task = document.getElementById("novel-task");
   const direction = document.getElementById("novel-direction");
 
-  if (!video || !task || !direction) {
+  if (!video || !videoContainer || !explanationBox || !task || !direction) {
     console.log("Novel object video controls not found.");
     return;
   }
 
   function updateNovelVideo() {
-    const videoPath = `static/videos/${task.value}_${direction.value}_novel_web.mp4`;
-    console.log("Loading novel object video:", videoPath);
+    const selectedTask = task.value;
+    const selectedDirection = direction.value;
+
+    if (selectedTask === "key" && selectedDirection === "reverse") {
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+
+      videoContainer.style.display = "none";
+      explanationBox.style.display = "block";
+      explanationBox.innerHTML = `
+        <strong>No reverse demo for Key.</strong><br>
+        Reverse execution is not shown because [put your real explanation here].
+      `;
+      return;
+    }
+
+    const videoPath = `static/videos/${selectedTask}_${selectedDirection}.mp4`;
+
+    explanationBox.style.display = "none";
+    videoContainer.style.display = "block";
 
     video.src = videoPath;
     video.load();
