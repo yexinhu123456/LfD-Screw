@@ -140,3 +140,19 @@ $(document).ready(function() {
     setupVideoCarouselAutoplay();
 
 })
+
+
+function updateVideo() {
+  const task = document.getElementById("task").value;
+  const direction = document.getElementById("direction").value;
+  const status = document.getElementById("status").value;
+
+  // build filename
+  const videoPath = `static/videos/${task}_${direction}_${status}.mp4`;
+
+  const video = document.getElementById("demoVideo");
+  const source = video.querySelector("source");
+
+  source.src = videoPath;
+  video.load();  // reload video
+}
