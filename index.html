@@ -493,6 +493,104 @@
 </section>
 <!-- Table -->
     
+
+<section class="section hero is-light" id="implementation-details">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Implementation Details</h2>
+
+```
+<div class="content has-text-justified">
+  <p>
+    Unless otherwise stated, learning, segmentation, and admittance
+    parameters were shared across all four tasks. Only the wrench safety
+    limits and scalar load weights were task-dependent to account for
+    different contact and material properties.
+  </p>
+</div>
+
+<h3 class="title is-4">Segmentation and Fitting</h3>
+<div class="table-container">
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth is-size-7">
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Parameter</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>SE(3) smoothing</td><td>Window / polynomial order</td><td>300 / 3</td></tr>
+      <tr><td>Direction features</td><td>Minimum rotation / translation</td><td>0.001&deg; / 10<sup>-6</sup> m</td></tr>
+      <tr><td>Block segmentation</td><td>Block length</td><td>200 samples</td></tr>
+      <tr><td>Boundary detection</td><td>Rotation / translation cosine thresholds</td><td>0.9 / 0.9</td></tr>
+      <tr><td>Boundary refinement</td><td>Rotation / translation weights</td><td>1.0 / 1.0</td></tr>
+      <tr><td>Small-motion block</td><td>Translation / rotation thresholds</td><td>0.2 mm / 0.2&deg;</td></tr>
+      <tr><td>Global refinement</td><td>Translation hysteresis</td><td>2 mm / 5 mm</td></tr>
+      <tr><td>Global refinement</td><td>Rotation hysteresis</td><td>5&deg; / 10&deg;</td></tr>
+      <tr><td>Dwell cleanup</td><td>Translation / rotation thresholds</td><td>5 mm / 10&deg;</td></tr>
+      <tr><td>Screw fitting</td><td>Loss / subsampling</td><td>Huber / 10</td></tr>
+      <tr><td>Screw fitting</td><td>Rotation / translation weights</td><td>1.0 / 1.0</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="title is-4">Execution and Alignment</h3>
+<div class="table-container">
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth is-size-7">
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Parameter</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Control</td><td>Timestep</td><td>1 ms</td></tr>
+      <tr><td>6D admittance</td><td>M diagonal</td><td>[0.2, 0.2, 0.2, 0.05, 0.05, 0.05]</td></tr>
+      <tr><td>6D admittance</td><td>B diagonal</td><td>[40, 40, 40, 3, 3, 3]</td></tr>
+      <tr><td>6D admittance</td><td>K diagonal</td><td>[1000, 1000, 1000, 4, 4, 4]</td></tr>
+      <tr><td>Pose correction</td><td>Translation / rotation limits</td><td>4 mm / 0.1 rad per axis</td></tr>
+      <tr><td>Primitive termination</td><td>Speed / duration</td><td>10% of nominal speed / 0.3 s</td></tr>
+      <tr><td>Contact detection</td><td>Force / direction threshold</td><td>2.5 N / cosine 0.9</td></tr>
+      <tr><td>Spiral search</td><td>Rate / maximum radius</td><td>2 Hz / 15 mm</td></tr>
+      <tr><td>Spiral search</td><td>Angular / radial rate</td><td>0.5 rad/s / 0.125 mm/s</td></tr>
+      <tr><td>Spiral termination</td><td>Force / stable samples</td><td>4 N / 5 samples</td></tr>
+      <tr><td>Screw regrasp</td><td>Interval / rewind speed</td><td>90&deg; / 30&deg;/s</td></tr>
+      <tr><td>Release detection</td><td>Dither radius / frequency / threshold</td><td>3 mm / 1 Hz / 2.0</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="title is-4">Task-Dependent Wrench Parameters</h3>
+<div class="table-container">
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth is-size-7">
+    <thead>
+      <tr>
+        <th>Task / Phase</th>
+        <th>k<sub>F</sub><sup>&parallel;</sup></th>
+        <th>k<sub>T</sub><sup>&parallel;</sup></th>
+        <th>k<sub>F</sub><sup>&perp;</sup></th>
+        <th>k<sub>T</sub><sup>&perp;</sup></th>
+        <th>Force Limit</th>
+        <th>Torque Limit</th>
+        <th>T<sub>z</sub> Limit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Peg</td><td>1.0</td><td>5.0</td><td>0.1</td><td>0.1</td><td>25 N</td><td>2 Nm</td><td>10 Nm</td></tr>
+      <tr><td>Battery</td><td>1.5</td><td>10.0</td><td>1.0</td><td>1.0</td><td>25 N</td><td>3 Nm</td><td>10 Nm</td></tr>
+      <tr><td>Lock insertion</td><td>0.5</td><td>1.0</td><td>0.1</td><td>0.1</td><td>25 N</td><td>2 Nm</td><td>0.6 Nm</td></tr>
+      <tr><td>Lock rotation</td><td>1.0</td><td>30.0</td><td>0.1</td><td>0.1</td><td>25 N</td><td>2 Nm</td><td>0.6 Nm</td></tr>
+      <tr><td>Screw driving</td><td>1.0</td><td>30.0</td><td>0.1</td><td>0.1</td><td>25 N</td><td>3 Nm</td><td>10 Nm</td></tr>
+    </tbody>
+  </table>
+</div>
+```
+
+  </div>
+</section>
+
+
     
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
