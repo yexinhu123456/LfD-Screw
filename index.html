@@ -475,7 +475,7 @@
   </p>
 </div>
 
-<h3 class="title is-4">Segmentation and Fitting</h3>
+<h3 class="title is-4">Segmentation</h3>
 <div class="table-container">
   <table class="table is-bordered is-striped is-hoverable is-fullwidth is-size-7">
     <thead>
@@ -493,12 +493,11 @@
       <tr><td>Global refinement</td><td>Translation hysteresis min/max</td><td>2 mm / 5 mm</td></tr>
       <tr><td>Global refinement</td><td>Rotation hysteresis min/max</td><td>5&deg; / 10&deg;</td></tr>
       <tr><td>Dwell cleanup</td><td>Translation / rotation thresholds</td><td>5 mm / 10&deg;</td></tr>
-      <tr><td>Screw fitting weights</td><td>Rotation / translation weights</td><td>1.0 / 1.0</td></tr>
     </tbody>
   </table>
 </div>
 
-<h3 class="title is-4">Execution and Alignment</h3>
+<h3 class="title is-4">Spiral Search Alignment</h3>
 <div class="table-container">
   <table class="table is-bordered is-striped is-hoverable is-fullwidth is-size-7">
     <thead>
@@ -510,12 +509,6 @@
     </thead>
     <tbody>
       <tr><td>Control</td><td>Timestep</td><td>1 ms</td></tr>
-      <tr><td>6D admittance</td><td>M diagonal</td><td>[0.2, 0.2, 0.2, 0.05, 0.05, 0.05]</td></tr>
-      <tr><td>6D admittance</td><td>B diagonal</td><td>[40, 40, 40, 3, 3, 3]</td></tr>
-      <tr><td>6D admittance</td><td>K diagonal</td><td>[1000, 1000, 1000, 4, 4, 4]</td></tr>
-      <tr><td>Pose correction</td><td>Translation / rotation limits</td><td>4 mm / 0.1 rad per axis</td></tr>
-      <tr><td>Primitive termination</td><td>Speed / duration</td><td>10% of nominal speed / 0.3 s</td></tr>
-      <tr><td>Contact detection</td><td>Force </td><td>2.5 N</td></tr>
       <tr><td>Spiral search</td><td>Rate / maximum radius</td><td>2 Hz / 15 mm</td></tr>
       <tr><td>Spiral search</td><td>Angular / radial rate</td><td>0.5 rad/s / 0.125 mm/s</td></tr>
       <tr><td>Spiral termination</td><td>Force / stable samples</td><td>4 N / 5 samples</td></tr>
@@ -523,6 +516,35 @@
   </table>
 </div>
 
+<h3 class="title is-4">Screw Fitting and Execution under Admittance</h3>
+<div class="table-container">
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth is-size-7">
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Parameter</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Screw fitting weights</td><td>Rotation / translation weights</td><td>1.0 / 1.0</td></tr>
+      <tr><td>Control</td><td>Timestep</td><td>1 ms</td></tr>
+      <tr><td>6D admittance</td><td>M diagonal</td><td>[0.2, 0.2, 0.2, 0.05, 0.05, 0.05]</td></tr>
+      <tr><td>6D admittance</td><td>B diagonal</td><td>[40, 40, 40, 3, 3, 3]</td></tr>
+      <tr><td>6D admittance</td><td>K diagonal</td><td>[1000, 1000, 1000, 4, 4, 4]</td></tr>
+      <tr><td>1D admittance</td><td>B<sub>&theta;</sub></td><td>10 / |nominal progress speed|</td></tr>
+      <tr><td>1D admittance</td><td>M<sub>&theta;</sub></td><td>0.05 B<sub>&theta;</sub></td></tr>
+      <tr><td>Pose correction</td><td>Translation / rotation limits</td><td>4 mm / 0.1 rad per axis</td></tr>
+      <tr><td>Primitive termination</td><td>Speed / duration</td><td>10% of nominal speed / 0.3 s</td></tr>
+      <tr><td>Contact detection</td><td>Force </td><td>2.5 N</td></tr>
+
+    </tbody>
+  </table>
+</div>
+
+
+
+    
 <h3 class="title is-4">Task-Dependent Wrench Parameters</h3>
 <div class="table-container">
   <table class="table is-bordered is-striped is-hoverable is-fullwidth is-size-7">
