@@ -486,17 +486,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td>SE(3) smoothing</td><td>Window / polynomial order</td><td>300 / 3</td></tr>
-      <tr><td>Direction features</td><td>Minimum rotation / translation</td><td>0.001&deg; / 10<sup>-6</sup> m</td></tr>
-      <tr><td>Block segmentation</td><td>Block length</td><td>200 samples</td></tr>
+      <tr><td>Block segmentation</td><td>Block length</td><td>300 samples (0.3 s)</td></tr>
       <tr><td>Boundary detection</td><td>Rotation / translation cosine thresholds</td><td>0.9 / 0.9</td></tr>
-      <tr><td>Boundary refinement</td><td>Rotation / translation weights</td><td>1.0 / 1.0</td></tr>
+      <tr><td>Boundary refinement weights</td><td>Rotation / translation weights</td><td>1.0 / 1.0</td></tr>
       <tr><td>Small-motion block</td><td>Translation / rotation thresholds</td><td>0.2 mm / 0.2&deg;</td></tr>
-      <tr><td>Global refinement</td><td>Translation hysteresis</td><td>2 mm / 5 mm</td></tr>
-      <tr><td>Global refinement</td><td>Rotation hysteresis</td><td>5&deg; / 10&deg;</td></tr>
+      <tr><td>Global refinement</td><td>Translation hysteresis min/max</td><td>2 mm / 5 mm</td></tr>
+      <tr><td>Global refinement</td><td>Rotation hysteresis min/max</td><td>5&deg; / 10&deg;</td></tr>
       <tr><td>Dwell cleanup</td><td>Translation / rotation thresholds</td><td>5 mm / 10&deg;</td></tr>
-      <tr><td>Screw fitting</td><td>Loss / subsampling</td><td>Huber / 10</td></tr>
-      <tr><td>Screw fitting</td><td>Rotation / translation weights</td><td>1.0 / 1.0</td></tr>
+      <tr><td>Screw fitting weights</td><td>Rotation / translation weights</td><td>1.0 / 1.0</td></tr>
     </tbody>
   </table>
 </div>
@@ -518,12 +515,10 @@
       <tr><td>6D admittance</td><td>K diagonal</td><td>[1000, 1000, 1000, 4, 4, 4]</td></tr>
       <tr><td>Pose correction</td><td>Translation / rotation limits</td><td>4 mm / 0.1 rad per axis</td></tr>
       <tr><td>Primitive termination</td><td>Speed / duration</td><td>10% of nominal speed / 0.3 s</td></tr>
-      <tr><td>Contact detection</td><td>Force / direction threshold</td><td>2.5 N / cosine 0.9</td></tr>
+      <tr><td>Contact detection</td><td>Force </td><td>2.5 N</td></tr>
       <tr><td>Spiral search</td><td>Rate / maximum radius</td><td>2 Hz / 15 mm</td></tr>
       <tr><td>Spiral search</td><td>Angular / radial rate</td><td>0.5 rad/s / 0.125 mm/s</td></tr>
       <tr><td>Spiral termination</td><td>Force / stable samples</td><td>4 N / 5 samples</td></tr>
-      <tr><td>Screw regrasp</td><td>Interval / rewind speed</td><td>90&deg; / 30&deg;/s</td></tr>
-      <tr><td>Release detection</td><td>Dither radius / frequency / threshold</td><td>3 mm / 1 Hz / 2.0</td></tr>
     </tbody>
   </table>
 </div>
